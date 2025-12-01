@@ -3,7 +3,6 @@
 namespace App\Modules\Wallet\Repositories;
 
 use App\Modules\Wallet\Models\Wallet;
-use App\Modules\Wallet\Repositories\WalletRepositoryInterface;
 
 class WalletRepository implements WalletRepositoryInterface
 {

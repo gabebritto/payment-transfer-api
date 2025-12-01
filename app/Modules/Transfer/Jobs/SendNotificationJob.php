@@ -34,7 +34,7 @@ class SendNotificationJob implements ShouldQueue
      */
     public function handle(\App\Modules\Transfer\Services\NotificationService $notificationService): void
     {
-        if (!$notificationService->sendNotification($this->email, $this->phoneNumber, $this->message)) {
+        if (! $notificationService->sendNotification($this->email, $this->phoneNumber, $this->message)) {
             $this->release(10);
         }
     }
