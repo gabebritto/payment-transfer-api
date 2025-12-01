@@ -9,8 +9,7 @@ class SmsNotificationStrategy implements NotificationStrategyInterface
 {
     public function __construct(
         protected SmsNotificationClient $client
-    ) {
-    }
+    ) {}
 
     public function send(array $data, string $message): bool
     {

@@ -11,7 +11,9 @@ use Tests\TestCase;
 class NotificationServiceTest extends TestCase
 {
     private $factory;
+
     private $strategy;
+
     private $service;
 
     protected function setUp(): void

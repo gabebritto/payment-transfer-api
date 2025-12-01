@@ -18,8 +18,7 @@ class TransferService
         private readonly AuthorizationService $authorizationService,
         private readonly WalletRepositoryInterface $walletRepository,
         private readonly TransactionRepositoryInterface $transactionRepository
-    ) {
-    }
+    ) {}
 
     public function execute(string $payerId, string $payeeId, int $value): Transaction
     {
@@ -70,7 +69,7 @@ class TransferService
 
     private function validateAuthorization(): void
     {
-        if (!$this->authorizationService->isAuthorized()) {
+        if (! $this->authorizationService->isAuthorized()) {
             Log::error('Transfer failed: Unauthorized by external service');
             throw TransactionException::unauthorizedTransfer();
         }
@@ -84,7 +83,7 @@ class TransferService
         $walletA = $this->walletRepository->lockForUpdate($firstId);
         $walletB = $this->walletRepository->lockForUpdate($secondId);
 
-        if (!$walletA || !$walletB) {
+        if (! $walletA || ! $walletB) {
             throw TransactionException::walletNotFound();
         }
 
@@ -93,7 +92,7 @@ class TransferService
 
     private function validatePayerType(Wallet $sender): void
     {
-        if (!$sender->owner->canSendMoney()) {
+        if (! $sender->owner->canSendMoney()) {
             throw TransactionException::payerCannotSendMoney();
         }
     }

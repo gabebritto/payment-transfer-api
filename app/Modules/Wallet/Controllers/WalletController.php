@@ -10,14 +10,13 @@ class WalletController extends Controller
 {
     public function __construct(
         private readonly WalletService $walletService
-    ) {
-    }
+    ) {}
 
     public function show(string $walletId): JsonResponse
     {
         $wallet = $this->walletService->getWallet($walletId);
 
-        if (!$wallet) {
+        if (! $wallet) {
             return response()->json(['message' => 'Wallet not found'], 404);
         }
 

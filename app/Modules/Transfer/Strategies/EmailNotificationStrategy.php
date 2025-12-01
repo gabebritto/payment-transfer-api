@@ -9,8 +9,7 @@ class EmailNotificationStrategy implements NotificationStrategyInterface
 {
     public function __construct(
         protected EmailNotificationClient $client
-    ) {
-    }
+    ) {}
 
     public function send(array $data, string $message): bool
     {

@@ -9,8 +9,7 @@ class WalletService
 {
     public function __construct(
         private readonly WalletRepositoryInterface $walletRepository
-    ) {
-    }
+    ) {}
 
     public function getWallet(string $walletId): ?\App\Modules\Wallet\Models\Wallet
     {

@@ -42,7 +42,7 @@ class SendNotificationJob implements ShouldQueue
             'phone_number' => $this->phoneNumber,
         ];
 
-        if (!$notificationService->sendNotification($data, $this->message, $this->channels)) {
+        if (! $notificationService->sendNotification($data, $this->message, $this->channels)) {
             $this->release(10);
         }
     }

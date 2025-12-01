@@ -14,8 +14,7 @@ class NotificationStrategyFactory
     public function __construct(
         protected EmailNotificationClient $emailClient,
         protected SmsNotificationClient $smsClient
-    ) {
-    }
+    ) {}
 
     public function make(NotificationChannelEnum $channel): NotificationStrategyInterface
     {

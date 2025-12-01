@@ -16,7 +16,7 @@ class AddRequestId
 
         Context::add('request_id', $requestId);
 
-        if (!$request->hasHeader('X-Request-ID')) {
+        if (! $request->hasHeader('X-Request-ID')) {
             $request->headers->set('X-Request-ID', $requestId);
         }
 

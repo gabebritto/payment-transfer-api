@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Support\Facades\Context;
-use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class ObservabilityTest extends TestCase

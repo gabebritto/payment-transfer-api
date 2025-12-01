@@ -9,11 +9,10 @@ class NotificationService
 {
     public function __construct(
         protected NotificationStrategyFactory $factory
-    ) {
-    }
+    ) {}
 
     /**
-     * @param array<NotificationChannelEnum> $channels
+     * @param  array<NotificationChannelEnum>  $channels
      */
     public function sendNotification(array $data, string $message, array $channels = []): bool
     {
@@ -26,7 +25,7 @@ class NotificationService
         foreach ($channels as $channel) {
             $strategy = $this->factory->make($channel);
 
-            if (!$strategy->send($data, $message)) {
+            if (! $strategy->send($data, $message)) {
                 $allSuccessful = false;
             }
         }

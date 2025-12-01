@@ -14,7 +14,9 @@ use Tests\TestCase;
 class NotificationStrategyFactoryTest extends TestCase
 {
     private $emailClient;
+
     private $smsClient;
+
     private $factory;
 
     protected function setUp(): void
