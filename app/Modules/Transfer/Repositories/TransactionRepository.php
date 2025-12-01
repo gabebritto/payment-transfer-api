@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Modules\Transfer\Repositories;
 
-use App\Models\Transaction;
-use App\Repositories\Contracts\TransactionRepositoryInterface;
+use App\Modules\Transfer\Models\Transaction;
+use App\Modules\Transfer\Repositories\TransactionRepositoryInterface;
 
 class TransactionRepository implements TransactionRepositoryInterface
 {

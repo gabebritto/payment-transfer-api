@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Modules\Transfer\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -32,9 +32,9 @@ class SendNotificationJob implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(\App\Services\NotificationService $notificationService): void
+    public function handle(\App\Modules\Transfer\Services\NotificationService $notificationService): void
     {
-        if (! $notificationService->sendNotification($this->email, $this->phoneNumber, $this->message)) {
+        if (!$notificationService->sendNotification($this->email, $this->phoneNumber, $this->message)) {
             $this->release(10);
         }
     }

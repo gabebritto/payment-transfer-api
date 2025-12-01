@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Modules\Transfer\Controllers;
 
-use App\Http\Requests\TransferRequest;
-use App\Services\TransferService;
+use App\Http\Controllers\Controller;
+use App\Modules\Transfer\Requests\TransferRequest;
+use App\Modules\Transfer\Services\TransferService;
 use Illuminate\Http\JsonResponse;
 
 class TransferController extends Controller

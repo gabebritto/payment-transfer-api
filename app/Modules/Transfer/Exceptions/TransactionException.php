@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Modules\Transfer\Exceptions;
 
 use Exception;
 use Symfony\Component\HttpFoundation\Response;

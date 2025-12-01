@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace App\Modules\Wallet\Repositories;
 
-use App\Models\Wallet;
+use App\Modules\Wallet\Models\Wallet;
 
 interface WalletRepositoryInterface
 {

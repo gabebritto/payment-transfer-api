@@ -5,10 +5,12 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Retailer>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Modules\User\Models\Retailer>
  */
 class RetailerFactory extends Factory
 {
+    protected $model = \App\Modules\User\Models\Retailer::class;
+
     /**
      * The current password being used by the factory.
      */

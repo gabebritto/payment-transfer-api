@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Services;
+namespace App\Modules\Transfer\Services;
 
 class AuthorizationService
 {
     public function __construct(
-        protected \App\Clients\AuthorizationClient $client
-    ) {}
+        protected \App\Modules\Transfer\Clients\AuthorizationClient $client
+    ) {
+    }
 
     public function isAuthorized(): bool
     {

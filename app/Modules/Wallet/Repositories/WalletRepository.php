@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Modules\Wallet\Repositories;
 
-use App\Models\Wallet;
-use App\Repositories\Contracts\WalletRepositoryInterface;
+use App\Modules\Wallet\Models\Wallet;
+use App\Modules\Wallet\Repositories\WalletRepositoryInterface;
 
 class WalletRepository implements WalletRepositoryInterface
 {

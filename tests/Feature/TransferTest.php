@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Jobs\SendNotificationJob;
-use App\Models\Retailer;
-use App\Models\User;
-use App\Models\Wallet;
+use App\Modules\Transfer\Jobs\SendNotificationJob;
+use App\Modules\User\Models\Retailer;
+use App\Modules\User\Models\User;
+use App\Modules\Wallet\Models\Wallet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
@@ -20,7 +20,7 @@ class TransferTest extends TestCase
 
         Queue::fake();
 
-        $this->mock(\App\Services\AuthorizationService::class, function ($mock) {
+        $this->mock(\App\Modules\Transfer\Services\AuthorizationService::class, function ($mock) {
             $mock->shouldReceive('isAuthorized')->andReturn(true);
         });
     }
@@ -108,7 +108,7 @@ class TransferTest extends TestCase
     public function test_transfer_fails_if_authorization_service_denies()
     {
         // Override the default mock
-        $this->mock(\App\Services\AuthorizationService::class, function ($mock) {
+        $this->mock(\App\Modules\Transfer\Services\AuthorizationService::class, function ($mock) {
             $mock->shouldReceive('isAuthorized')->andReturn(false);
         });
 
@@ -133,7 +133,7 @@ class TransferTest extends TestCase
         $payer = User::factory()->has(Wallet::factory()->state(['balance' => 10000]))->create();
         $payee = User::factory()->has(Wallet::factory()->state(['balance' => 0]))->create();
 
-        $transferService = app(\App\Services\TransferService::class);
+        $transferService = app(\App\Modules\Transfer\Services\TransferService::class);
         $transferService->execute($payer->wallet->id, $payee->wallet->id, 1000);
 
         Queue::assertPushed(SendNotificationJob::class, function (SendNotificationJob $job) {

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Services;
+namespace App\Modules\Transfer\Services;
 
 class NotificationService
 {
     public function __construct(
-        protected \App\Clients\NotificationClient $client
-    ) {}
+        protected \App\Modules\Transfer\Clients\NotificationClient $client
+    ) {
+    }
 
     public function sendNotification(string $email, string $phoneNumber, string $message): bool
     {

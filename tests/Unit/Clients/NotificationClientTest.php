@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Clients;
 
-use App\Clients\NotificationClient;
+use App\Modules\Transfer\Clients\NotificationClient;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 

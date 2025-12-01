@@ -1,26 +1,30 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Retailer extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected static function newFactory()
+    {
+        return \Database\Factories\RetailerFactory::new();
+    }
+
     protected $fillable = [
         'name',
-        'document',
         'email',
         'phone_number',
         'password',
+        'document',
     ];
 
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     protected function casts(): array
@@ -32,11 +36,11 @@ class User extends Authenticatable
 
     public function canSendMoney(): bool
     {
-        return true;
+        return false;
     }
 
-    public function wallet()
+    public function wallet(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
-        return $this->morphOne(Wallet::class, 'owner');
+        return $this->morphOne(\App\Modules\Wallet\Models\Wallet::class, 'owner');
     }
 }

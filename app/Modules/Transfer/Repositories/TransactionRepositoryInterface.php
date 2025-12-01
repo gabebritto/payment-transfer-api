@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace App\Modules\Transfer\Repositories;
 
-use App\Models\Transaction;
+use App\Modules\Transfer\Models\Transaction;
 
 interface TransactionRepositoryInterface
 {

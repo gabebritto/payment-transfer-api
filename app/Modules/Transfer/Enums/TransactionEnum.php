@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\Modules\Transfer\Enums;
 
 enum TransactionEnum: string
 {

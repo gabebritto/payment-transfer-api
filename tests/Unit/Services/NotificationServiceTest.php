@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Clients\NotificationClient;
-use App\Services\NotificationService;
+use App\Modules\Transfer\Clients\NotificationClient;
+use App\Modules\Transfer\Services\NotificationService;
 use Mockery;
 use Tests\TestCase;
 

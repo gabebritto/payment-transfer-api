@@ -14,11 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (App\Exceptions\TransactionException $e) {
+        $exceptions->render(function (\App\Modules\Transfer\Exceptions\TransactionException $e) {
             return $e->render(request());
         });
 
         $exceptions->dontReport([
-            App\Exceptions\TransactionException::class,
+            \App\Modules\Transfer\Exceptions\TransactionException::class,
         ]);
     })->create();

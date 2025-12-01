@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Jobs;
 
-use App\Jobs\SendNotificationJob;
-use App\Services\NotificationService;
+use App\Modules\Transfer\Jobs\SendNotificationJob;
+use App\Modules\Transfer\Services\NotificationService;
 use Mockery;
 use Tests\TestCase;
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Services;
+namespace App\Modules\Transfer\Services;
 
-use App\Enums\TransactionEnum;
-use App\Exceptions\TransactionException;
-use App\Jobs\SendNotificationJob;
-use App\Models\Transaction;
+use App\Modules\Transfer\Enums\TransactionEnum;
+use App\Modules\Transfer\Exceptions\TransactionException;
+use App\Modules\Transfer\Jobs\SendNotificationJob;
+use App\Modules\Transfer\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 
 class TransferService
 {
     public function __construct(
         private readonly AuthorizationService $authorizationService,
-        private readonly \App\Repositories\Contracts\WalletRepositoryInterface $walletRepository,
-        private readonly \App\Repositories\Contracts\TransactionRepositoryInterface $transactionRepository
+        private readonly \App\Modules\Wallet\Repositories\WalletRepositoryInterface $walletRepository,
+        private readonly \App\Modules\Transfer\Repositories\TransactionRepositoryInterface $transactionRepository
     ) {
     }
 
