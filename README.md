@@ -68,6 +68,8 @@ Implemented with **Laravel**, **Docker**, **MySQL**, and **Redis**. It handles u
 
 The API enforces `application/json` responses.
 
+Auto-generated API documentation is available at `/docs/api`.
+
 ## Testing
 
 To run the automated test suite:
