@@ -11,6 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->prepend([
+            \App\Http\Middleware\AddRequestId::class,
+        ]);
+
         $middleware->api(
             append: [
                 \App\Http\Middleware\ForceJsonResponse::class,
@@ -25,4 +29,16 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->dontReport([
             \App\Modules\Transfer\Exceptions\TransactionException::class,
         ]);
+
+        $exceptions->report(function (Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('Exception occurred', [
+                'message' => $e->getMessage(),
+                'exception' => get_class($e),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+                'request_id' => \Illuminate\Support\Facades\Context::get('request_id'),
+                'user_id' => request()->user()?->id,
+            ]);
+        });
     })->create();

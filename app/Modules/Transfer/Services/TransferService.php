@@ -14,7 +14,8 @@ class TransferService
         private readonly AuthorizationService $authorizationService,
         private readonly \App\Modules\Wallet\Repositories\WalletRepositoryInterface $walletRepository,
         private readonly \App\Modules\Transfer\Repositories\TransactionRepositoryInterface $transactionRepository
-    ) {}
+    ) {
+    }
 
     public function execute(string $payerId, string $payeeId, int $value): Transaction
     {
@@ -28,7 +29,7 @@ class TransferService
         }
 
         // Consult Authorization Service
-        if (! $this->authorizationService->isAuthorized()) {
+        if (!$this->authorizationService->isAuthorized()) {
             throw TransactionException::unauthorizedTransfer();
         }
 
@@ -40,14 +41,14 @@ class TransferService
             $walletA = $this->walletRepository->lockForUpdate($firstId);
             $walletB = $this->walletRepository->lockForUpdate($secondId);
 
-            if (! $walletA || ! $walletB) {
+            if (!$walletA || !$walletB) {
                 throw TransactionException::walletNotFound();
             }
 
             $sender = ($walletA->id == $payerId) ? $walletA : $walletB;
             $receiver = ($walletA->id == $payeeId) ? $walletA : $walletB;
 
-            if (! $sender->owner->canSendMoney()) {
+            if (!$sender->owner->canSendMoney()) {
                 throw TransactionException::payerCannotSendMoney();
             }
 
