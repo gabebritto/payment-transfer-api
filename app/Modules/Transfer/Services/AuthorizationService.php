@@ -6,7 +6,8 @@ class AuthorizationService
 {
     public function __construct(
         protected \App\Modules\Transfer\Clients\AuthorizationClient $client
-    ) {}
+    ) {
+    }
 
     public function isAuthorized(): bool
     {
