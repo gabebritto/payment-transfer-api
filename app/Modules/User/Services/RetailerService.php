@@ -14,8 +14,7 @@ class RetailerService
     public function __construct(
         private readonly RetailerRepositoryInterface $retailerRepository,
         private readonly WalletRepositoryInterface $walletRepository,
-    ) {
-    }
+    ) {}
 
     public function create(array $data): Retailer
     {

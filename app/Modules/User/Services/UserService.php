@@ -14,8 +14,7 @@ class UserService
     public function __construct(
         private readonly UserRepositoryInterface $userRepository,
         private readonly WalletRepositoryInterface $walletRepository,
-    ) {
-    }
+    ) {}
 
     public function create(array $data): User
     {

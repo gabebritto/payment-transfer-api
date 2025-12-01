@@ -11,8 +11,7 @@ class RetailerController extends Controller
 {
     public function __construct(
         private readonly RetailerService $retailerService
-    ) {
-    }
+    ) {}
 
     public function store(CreateRetailerRequest $request): JsonResponse
     {
