@@ -19,14 +19,17 @@ class SendNotificationJob implements ShouldQueue
 
     public string $message;
 
+    public array $channels;
+
     /**
      * Create a new job instance.
      */
-    public function __construct(string $email, string $phoneNumber, string $message)
+    public function __construct(string $email, string $phoneNumber, string $message, array $channels = [])
     {
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
         $this->message = $message;
+        $this->channels = $channels;
     }
 
     /**
@@ -34,7 +37,12 @@ class SendNotificationJob implements ShouldQueue
      */
     public function handle(\App\Modules\Transfer\Services\NotificationService $notificationService): void
     {
-        if (! $notificationService->sendNotification($this->email, $this->phoneNumber, $this->message)) {
+        $data = [
+            'email' => $this->email,
+            'phone_number' => $this->phoneNumber,
+        ];
+
+        if (!$notificationService->sendNotification($data, $this->message, $this->channels)) {
             $this->release(10);
         }
     }

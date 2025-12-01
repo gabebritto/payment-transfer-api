@@ -27,7 +27,7 @@ class SendNotificationJobTest extends TestCase
     {
         $this->notificationService->shouldReceive('sendNotification')
             ->once()
-            ->with($this->email, $this->phoneNumber, $this->message)
+            ->with(['email' => 'test@example.com', 'phone_number' => '123456789'], 'Message', [])
             ->andReturn(true);
 
         $job = new SendNotificationJob($this->email, $this->phoneNumber, $this->message);
