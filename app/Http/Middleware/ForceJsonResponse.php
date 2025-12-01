@@ -15,6 +15,10 @@ class ForceJsonResponse
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->is('docs/*', 'sanctum/*')) {
+            return $next($request);
+        }
+
         $request->headers->set('Accept', 'application/json');
 
         return $next($request);
