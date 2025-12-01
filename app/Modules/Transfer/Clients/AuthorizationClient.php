@@ -13,9 +13,9 @@ class AuthorizationClient
         $response = Http::get($this->baseUrl);
 
         if ($response->successful()) {
-            $data = $response->json();
+            $content = $response->json();
 
-            return $data['authorization'];
+            return $content['data']['authorization'];
         }
 
         return false;
