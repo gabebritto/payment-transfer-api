@@ -3,6 +3,7 @@
 namespace App\Modules\Transfer\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class TransactionException extends Exception
@@ -37,10 +38,10 @@ class TransactionException extends Exception
         return new self('Value must be greater than zero.', Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public function render($request)
+    public function render(): JsonResponse
     {
         return response()->json([
             'message' => $this->getMessage(),
-        ], $this->getCode());
+        ], 422);
     }
 }

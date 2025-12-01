@@ -12,10 +12,10 @@ class WalletService
     ) {
     }
 
-    public function getWallet(string $id): ?\App\Modules\Wallet\Models\Wallet
+    public function getWallet(string $walletId): ?\App\Modules\Wallet\Models\Wallet
     {
-        return Cache::rememberForever("wallet_{$id}", function () use ($id) {
-            return $this->walletRepository->findById($id);
+        return Cache::rememberForever("wallet_{$walletId}", function () use ($walletId) {
+            return $this->walletRepository->findById($walletId);
         });
     }
 }

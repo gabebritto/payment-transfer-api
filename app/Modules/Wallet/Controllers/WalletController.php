@@ -13,9 +13,9 @@ class WalletController extends Controller
     ) {
     }
 
-    public function show(string $id): JsonResponse
+    public function show(string $walletId): JsonResponse
     {
-        $wallet = $this->walletService->getWallet($id);
+        $wallet = $this->walletService->getWallet($walletId);
 
         if (!$wallet) {
             return response()->json(['message' => 'Wallet not found'], 404);

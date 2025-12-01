@@ -6,14 +6,14 @@ use App\Modules\Wallet\Models\Wallet;
 
 class WalletRepository implements WalletRepositoryInterface
 {
-    public function findById(string $id): ?Wallet
+    public function findById(string $walletId): ?Wallet
     {
-        return Wallet::find($id);
+        return Wallet::find($walletId);
     }
 
-    public function lockForUpdate(string $id): ?Wallet
+    public function lockForUpdate(string $walletId): ?Wallet
     {
-        return Wallet::with('owner')->lockForUpdate()->find($id);
+        return Wallet::with('owner')->lockForUpdate()->find($walletId);
     }
 
     public function save(Wallet $wallet): bool

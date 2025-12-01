@@ -42,7 +42,7 @@ class TransferServiceTest extends TestCase
         );
 
         Queue::fake();
-        DB::shouldReceive('transaction')->andReturnUsing(fn ($callback) => $callback());
+        DB::shouldReceive('transaction')->andReturnUsing(fn($callback) => $callback());
     }
 
     public function test_execute_throws_exception_when_payer_cannot_send_money()
