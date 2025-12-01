@@ -12,13 +12,13 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \App\Repositories\Contracts\WalletRepositoryInterface::class,
-            \App\Repositories\Eloquent\WalletRepository::class
+            \App\Modules\Wallet\Repositories\WalletRepositoryInterface::class,
+            \App\Modules\Wallet\Repositories\WalletRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Contracts\TransactionRepositoryInterface::class,
-            \App\Repositories\Eloquent\TransactionRepository::class
+            \App\Modules\Transfer\Repositories\TransactionRepositoryInterface::class,
+            \App\Modules\Transfer\Repositories\TransactionRepository::class
         );
     }
 
@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \App\Modules\Wallet\Models\Wallet::observe(\App\Modules\Wallet\Observers\WalletObserver::class);
     }
 }

@@ -1,0 +1,36 @@
+<?php
+
+namespace Tests\Unit\Clients;
+
+use App\Modules\Transfer\Clients\SmsNotificationClient;
+use Illuminate\Support\Facades\Http;
+use Tests\TestCase;
+
+class SmsNotificationClientTest extends TestCase
+{
+    private $client;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->client = new SmsNotificationClient;
+    }
+
+    public function test_notify_returns_true_when_api_succeeds()
+    {
+        Http::fake([
+            'util.devi.tools/api/v1/notify' => Http::response(null, 204),
+        ]);
+
+        $this->assertTrue($this->client->notify('123456789', 'Message'));
+    }
+
+    public function test_notify_returns_false_when_api_fails()
+    {
+        Http::fake([
+            'util.devi.tools/api/v1/notify' => Http::response(null, 500),
+        ]);
+
+        $this->assertFalse($this->client->notify('123456789', 'Message'));
+    }
+}

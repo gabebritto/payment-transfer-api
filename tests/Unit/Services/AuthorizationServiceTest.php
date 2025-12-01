@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Clients\AuthorizationClient;
-use App\Services\AuthorizationService;
+use App\Modules\Transfer\Clients\AuthorizationClient;
+use App\Modules\Transfer\Services\AuthorizationService;
 use Mockery;
 use Tests\TestCase;
 

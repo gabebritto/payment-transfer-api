@@ -2,16 +2,16 @@
 
 namespace Tests\Unit\Services;
 
-use App\Enums\TransactionEnum;
-use App\Exceptions\TransactionException;
-use App\Jobs\SendNotificationJob;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\Wallet;
-use App\Repositories\Contracts\TransactionRepositoryInterface;
-use App\Repositories\Contracts\WalletRepositoryInterface;
-use App\Services\AuthorizationService;
-use App\Services\TransferService;
+use App\Modules\Transfer\Enums\TransactionEnum;
+use App\Modules\Transfer\Exceptions\TransactionException;
+use App\Modules\Transfer\Jobs\SendNotificationJob;
+use App\Modules\Transfer\Models\Transaction;
+use App\Modules\Transfer\Repositories\TransactionRepositoryInterface;
+use App\Modules\Transfer\Services\AuthorizationService;
+use App\Modules\Transfer\Services\TransferService;
+use App\Modules\User\Models\User;
+use App\Modules\Wallet\Models\Wallet;
+use App\Modules\Wallet\Repositories\WalletRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Queue;
 use Mockery;
@@ -42,7 +42,7 @@ class TransferServiceTest extends TestCase
         );
 
         Queue::fake();
-        DB::shouldReceive('transaction')->andReturnUsing(fn($callback) => $callback());
+        DB::shouldReceive('transaction')->andReturnUsing(fn ($callback) => $callback());
     }
 
     public function test_execute_throws_exception_when_payer_cannot_send_money()

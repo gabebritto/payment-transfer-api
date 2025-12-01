@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Clients;
 
-use App\Clients\AuthorizationClient;
+use App\Modules\Transfer\Clients\AuthorizationClient;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 

@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Jobs;
 
-use App\Jobs\SendNotificationJob;
-use App\Services\NotificationService;
+use App\Modules\Transfer\Jobs\SendNotificationJob;
+use App\Modules\Transfer\Services\NotificationService;
 use Mockery;
 use Tests\TestCase;
 
@@ -27,7 +27,7 @@ class SendNotificationJobTest extends TestCase
     {
         $this->notificationService->shouldReceive('sendNotification')
             ->once()
-            ->with($this->email, $this->phoneNumber, $this->message)
+            ->with(['email' => 'test@example.com', 'phone_number' => '123456789'], 'Message', [])
             ->andReturn(true);
 
         $job = new SendNotificationJob($this->email, $this->phoneNumber, $this->message);
